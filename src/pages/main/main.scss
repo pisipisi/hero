@@ -1,0 +1,13 @@
+page-main {
+    position: relative;
+    .vertical-align-content > *
+    {
+    //    display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+    }
+    .button-align-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

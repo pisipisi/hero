@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-buttons menuToggle left>
+      <button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <button (click)="map.centerLocation()">
+          <ion-icon name="navigate"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  
+    <div class="map-wrapper">
+        <hero-map #map [destination]="helpeeLocation" [isPickupRequested]="isPickupRequested"></hero-map>
+    </div>
+    <div class="bottom request-controls">
+      <ion-row>
+        <ion-col>
+          <button [hidden]="!isPickupRequested" ion-button primary (click)="callHelpee()">Call Helpee</button>  
+        </ion-col>
+      </ion-row>
+    
+    </div>
+</ion-content>

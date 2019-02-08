@@ -1,0 +1,15 @@
+<div [hidden]="isNoteSent || isPickupRequested">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Enter your description</ion-label>
+      <ion-input type = "text" [(ngModel)]= "enteredNote" name="note"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Enter your phone number</ion-label>
+      <ion-input type = "text" [(ngModel)]= "enteredPhone" name="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button primary (click)="onSubmit()">Send Request</button>
+    </ion-item>
+  </ion-list>
+</div>

@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div [hidden]="!isPickupRequested">
+    <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-11="">
+            Directions
+          </ion-col>
+          <ion-col col-1="">
+            <ion-icon name="md-list" (click)="listExpand()"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+      <ion-card-content>
+        <div id="directionsPanel"></div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+ 
+  <div id="map"></div>
+  <hero-pickup 
+    [map]="map" 
+    [isPickupRequested]="isPickupRequested"
+    [helpeeLocation]="destination"
+    ></hero-pickup>
+</div>
+
