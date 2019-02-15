@@ -18,12 +18,15 @@ export class HeroPickupComponent implements OnChanges {
 
   private pickupMarker;
   private popup;
+
   constructor() {
     console.log('Hello HeroPickupComponent Component');
 
   }
 
+
   ngOnChanges() {
+    console.log()
     if(this.isPickupRequested){
         this.showPickupMarker();
       }
@@ -31,6 +34,7 @@ export class HeroPickupComponent implements OnChanges {
         this.hidePickupMarker();
       }
   }
+
 
 
 

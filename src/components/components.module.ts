@@ -7,6 +7,7 @@ import { PickupCarComponent } from './pickup-car/pickup-car';
 import { RequestNoteComponent } from './request-note/request-note';
 import { HeroMapComponent } from './hero-map/hero-map';
 import { HeroPickupComponent } from './hero-pickup/hero-pickup';
+import { HeroLocationComponent } from './hero-location/hero-location';
 @NgModule({
 	declarations: [MapsComponent,
     PickupComponent,
@@ -15,7 +16,9 @@ import { HeroPickupComponent } from './hero-pickup/hero-pickup';
     DestinationAddresComponent,
     RequestNoteComponent,
     HeroMapComponent,
-    HeroPickupComponent
+    HeroPickupComponent,
+    HeroLocationComponent,
+    HeroLocationComponent
 ],
 	imports: [],
 	exports: [MapsComponent,
@@ -25,6 +28,8 @@ import { HeroPickupComponent } from './hero-pickup/hero-pickup';
     DestinationAddresComponent,
     RequestNoteComponent,
     HeroMapComponent,
-    HeroPickupComponent]
+    HeroPickupComponent,
+    HeroLocationComponent,
+    HeroLocationComponent]
 })
 export class ComponentsModule {}

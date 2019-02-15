@@ -83,7 +83,7 @@ export class PickupComponent implements OnInit, OnChanges {
   }
 
   showPickupTime(){
-    console.log(this.isPickupRequested);
+
     this.popup = new google.maps.InfoWindow({
       content : '<h5>You Are Here</h5>'
     });

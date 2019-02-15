@@ -4,6 +4,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { Socket } from 'ng-socket-io';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
 //import { HttpInterceptorHandler } from '@angular/common/http/src/interceptor';
 declare var google : any;
 
@@ -17,6 +19,8 @@ export class HeroMapComponent {
   public map;
   public isMapIdle : boolean;
   public currentLocation;
+  positionSubscription: Subscription;
+
   constructor(public geolocation : Geolocation, public loadingCtrl : LoadingController, private socket: Socket, private nativeStorage:NativeStorage) {
     console.log('Hello HeroMapComponent Component');
   }
@@ -32,8 +36,9 @@ export class HeroMapComponent {
           this.map.setCenter(location);
         }
       });
-      
     });
+
+    this.getMovingPostion();
   }
   ngOnChanges() {
     if(this.isPickupRequested){
@@ -60,6 +65,38 @@ export class HeroMapComponent {
     let mapEl = document.getElementById("map");
     let map = new google.maps.Map(mapEl,mapOptions);
     return map;
+  }
+ 
+  getMovingPostion() {
+
+    this.positionSubscription = this.geolocation.watchPosition()
+      .pipe(
+        filter((p) => p.coords !== undefined) //Filter Out Errors
+      )
+      .subscribe(data => {
+        setTimeout(() => {
+          let lat = data.coords.latitude;
+          let lng = data.coords.longitude;
+          console.log('lat '+ lat +' and '+ 'long '+lng )
+          let location = new google.maps.LatLng(lat, lng);
+          console.log('current location '+location)
+          this.socket.emit('helper-location', location);
+          this.currentLocation = location;
+          // this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+          // this.redrawPath(this.trackedRoute);
+        }, 0);
+      });
+
+    //   this.geolocation.watchPosition((pos: Position) => {
+    //     let lat = pos.coords.latitude;
+    //     let lng = pos.coords.longitude;
+    //     console.log('lat '+ lat +' == '+ 'long '+lng )
+    //     let location = new google.maps.LatLng(lat, lng);
+    //     console.log('current location '+location)
+    //     observable.next(location);
+    // //    observable.complete();
+    //   });
+    
   }
 
   getCurrentLocation() {

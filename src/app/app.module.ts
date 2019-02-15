@@ -14,6 +14,7 @@ import { HeroRegisterPage } from '../pages/hero-register/hero-register';
 import { HeroHomePage } from '../pages/hero-home/hero-home';
 import { HeroMapComponent } from '../components/hero-map/hero-map';
 import { HeroPickupComponent } from '../components/hero-pickup/hero-pickup';
+import { HeroLocationComponent } from '../components/hero-location/hero-location';
 import { MapsComponent } from '../components/maps/maps';
 import { CarService } from '../providers/car/car';
 import { PickupCarComponent } from '../components/pickup-car/pickup-car';
@@ -44,7 +45,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     DestinationAddresComponent,
     RequestNoteComponent,
     HeroMapComponent,
-    HeroPickupComponent
+    HeroPickupComponent,
+    HeroLocationComponent
   ],
   imports: [
     BrowserModule,

@@ -23,11 +23,11 @@ export class HeroHomePage {
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad HeroHomePage');
-    this.insomnia.keepAwake()
-      .then(
-        () => console.log('success'),
-        () => console.log('error')
-      );
+    // this.insomnia.keepAwake()
+    //   .then(
+    //     () => console.log('success'),
+    //     () => console.log('error')
+    //   );
     this.getMessages().subscribe(message => {
       this.getHelp(message);
     });

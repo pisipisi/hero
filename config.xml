@@ -90,6 +90,9 @@
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.38.1" />
     </plugin>
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+        <string>This App wants to track your location</string>
+    </edit-config>
     <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
     <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
