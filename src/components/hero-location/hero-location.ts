@@ -50,6 +50,13 @@ export class HeroLocationComponent implements OnChanges {
   }
   
 
+  // rotateMarker() {
+  //   var deg = 180
+  //   document.querySelector('#markerLayer img').style.transform = 'rotate(' + deg + 'deg)'
+  //   console.log('changed')
+  //   google.maps.event.clearListeners(map, 'idle');
+  // }
+
   updatePosition(location) {
     this.heroLocation.setPosition(location);
   }
