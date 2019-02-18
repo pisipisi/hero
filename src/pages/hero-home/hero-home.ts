@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Socket } from 'ng-socket-io';
 import { CallNumber } from '@ionic-native/call-number';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
-
+import { FCM } from '@ionic-native/fcm/ngx';
 
 @IonicPage()
 @Component({
@@ -17,17 +17,15 @@ export class HeroHomePage {
   public isPickupRequested;
   private helperRoom;
   private helpeeNumber;
-  constructor(public alertCtrl: AlertController, private insomnia: Insomnia, public navCtrl: NavController, public navParams: NavParams, private socket: Socket, private callNumber: CallNumber) {
+  constructor(private fcm: FCM, public alertCtrl: AlertController, private insomnia: Insomnia, public navCtrl: NavController, public navParams: NavParams, private socket: Socket, private callNumber: CallNumber) {
   }
 
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad HeroHomePage');
-    // this.insomnia.keepAwake()
-    //   .then(
-    //     () => console.log('success'),
-    //     () => console.log('error')
-    //   );
+
+    
+
     this.getMessages().subscribe(message => {
       this.getHelp(message);
     });
@@ -38,6 +36,26 @@ export class HeroHomePage {
       this.socket.emit('helper-leave', this.helperRoom);
     });
 
+    this.fcm.subscribeToTopic('all');
+    this.fcm.getToken().then(token=>{
+        console.log(token);
+      });
+      this.fcm.onNotification().subscribe(data=>{
+        if(data.wasTapped){
+          console.log("Received in background");
+        } else {
+          console.log("Received in foreground");
+        };
+      })
+      this.fcm.onTokenRefresh().subscribe(token=>{
+        console.log(token);
+      });
+      //end notifications.
+      this.insomnia.keepAwake()
+        .then(
+          () => console.log('success'),
+          () => console.log('error')
+        );
 
   }
   getCancelHelp() {

@@ -6,6 +6,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { HomePage } from '../pages/home/home';
 import { MainPage } from '../pages/main/main';
 import { Facebook } from '@ionic-native/facebook';
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -17,6 +19,8 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      
       statusBar.styleDefault();
       splashScreen.hide();
     });

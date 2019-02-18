@@ -30,6 +30,9 @@ import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -75,8 +78,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     CarService,
     SimulateService,
     PickupPubSubService,
-    RestProvider
-    
+    RestProvider,
+    FCM
   ]
 })
 export class AppModule {}

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "870174658099",
+    "firebase_url": "https://hero-e89eb.firebaseio.com",
+    "project_id": "hero-e89eb",
+    "storage_bucket": "hero-e89eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870174658099:android:2de6410029c28f1a",
+        "android_client_info": {
+          "package_name": "com.aznsoft.hero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870174658099-0jqp6svltcakg39pea9t3t7e7au2civt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7F2l_qojJhcEgz70ke9KEodi6S9pnZoo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
