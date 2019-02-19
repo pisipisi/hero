@@ -24,7 +24,7 @@ export class MainPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
-    if (!(this.platform.is('mobileweb') || this.platform.is('core'))) {
+  //  if (!(this.platform.is('mobileweb') || this.platform.is('core'))) {
       this.nativeStorage.getItem('helper').then((data) => {
         if (data !== null && data.token) {
           this.navCtrl.setRoot(HeroHomePage);
@@ -34,7 +34,7 @@ export class MainPage {
       //   let helper = JSON.parse(localStorage.getItem("helper"));
       //   console.log(helper);
       // }
-    }
+  //  }
   }
 
   heroClick() {

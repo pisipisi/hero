@@ -119,12 +119,12 @@ export class HeroMapComponent {
         observable.next(location);
 
         loading.dismiss();
-      // },
-      // (err) => {
-      //   console.log('Geolocation err: '+ err);
-      //   loading.dismiss();
-      // })
-      })
+      },
+      (err) => {
+        console.log('Geolocation err: '+ err);
+        loading.dismiss();
+      });
+   
     })
     return locationObs;
   }

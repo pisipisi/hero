@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Socket } from 'ng-socket-io';
-import { CallNumber } from '@ionic-native/call-number';
+//import { CallNumber } from '@ionic-native/call-number';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
-
+import { RestProvider } from '../../providers/rest/rest';
 @IonicPage()
 @Component({
   selector: 'page-hero-home',
@@ -17,15 +17,20 @@ export class HeroHomePage {
   public isPickupRequested;
   private helperRoom;
   private helpeeNumber;
-  constructor(private fcm: FCM, public alertCtrl: AlertController, private insomnia: Insomnia, public navCtrl: NavController, public navParams: NavParams, private socket: Socket, private callNumber: CallNumber) {
+  constructor(private fcm: FCM, 
+    public alertCtrl: AlertController, 
+    private insomnia: Insomnia, 
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private socket: Socket,
+    public restProvider: RestProvider
+   // private callNumber: CallNumber
+    ) {
   }
 
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad HeroHomePage');
-
-    
-
     this.getMessages().subscribe(message => {
       this.getHelp(message);
     });
@@ -39,6 +44,9 @@ export class HeroHomePage {
     this.fcm.subscribeToTopic('all');
     this.fcm.getToken().then(token=>{
         console.log(token);
+        this.restProvider.updateFCMToken(token).then((result) => {
+          console.log(result);
+        });
       });
       this.fcm.onNotification().subscribe(data=>{
         if(data.wasTapped){
@@ -51,11 +59,11 @@ export class HeroHomePage {
         console.log(token);
       });
       //end notifications.
-      this.insomnia.keepAwake()
-        .then(
-          () => console.log('success'),
-          () => console.log('error')
-        );
+      // this.insomnia.keepAwake()
+      //   .then(
+      //     () => console.log('success'),
+      //     () => console.log('error')
+      //   );
 
   }
   getCancelHelp() {
@@ -103,9 +111,9 @@ export class HeroHomePage {
   }
 
   callHelpee() {
-    this.callNumber.callNumber(this.helpeeNumber, true)
-  .then(res => console.log('Launched dialer!', res))
-  .catch(err => console.log('Error launching dialer', err));
+  //   this.callNumber.callNumber(this.helpeeNumber, true)
+  // .then(res => console.log('Launched dialer!', res))
+  // .catch(err => console.log('Error launching dialer', err));
   }
 
 }

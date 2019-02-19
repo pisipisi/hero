@@ -25,11 +25,11 @@ import { RequestNoteComponent } from '../components/request-note/request-note'
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { Facebook } from '@ionic-native/facebook';
 import { NativeStorage } from '@ionic-native/native-storage';
-import { CallNumber } from '@ionic-native/call-number';
+//import { CallNumber } from '@ionic-native/call-number';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: 'http://192.168.77.114:3000', options: {} };
 
 import { FCM } from '@ionic-native/fcm/ngx';
 
@@ -70,7 +70,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
     StatusBar,
     SplashScreen,
     Facebook,
-    CallNumber,
+   // CallNumber,
     Insomnia,
     NativeStorage,
     Geolocation,
